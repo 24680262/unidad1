@@ -73,7 +73,7 @@ grid = ft.GridView(
     )
 ```
 ## Paso 7
-
+Creamos todos los botones que voy a usar en la calculadora.
 ```python
 botones = [
         ("1", ft.Colors.PRIMARY),
@@ -94,3 +94,39 @@ botones = [
         ("=", ft.Colors.BLUE)
     ]
 ```
+## Paso 8
+Con la ayuda del ciclo for, traemos los botones y el grid ya que esto nos ayuda a ordenar todo lo que ya tenemos hasta ahora.
+```python
+for texto, color in botones:
+        grid.controls.append(
+            ft.Container(
+                content=ft.Text(texto, color="white", weight="bold"),
+                height=50, 
+                bgcolor=color, 
+                border_radius=8,
+                alignment=ft.alignment.Alignment.CENTER,
+                on_click=boton_click, # <--- Aquí conectamos la lógica
+                data=texto
+            )
+        )
+```
+## Paso 9
+Esto le indica al Flet que debe de acomodar en columnas todo lo que tenemos.
+```python
+layout_principal=ft.Column(
+        controls=[
+            display,
+            grid
+        ],
+        tight=True
+    )
+
+    page.add(layout_principal)
+    page.update()
+```
+## Paso 10
+Llamamos al main para poder ejecutar el programa
+```python
+if __name__ == "__main__":
+    ft.app(target=main)
+``` 
